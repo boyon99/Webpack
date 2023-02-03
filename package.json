@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/boyon99/Webpack#readme",
   "devDependencies": {
+    "copy-webpack-plugin": "^11.0.0",
     "html-webpack-plugin": "^5.5.0",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1",
