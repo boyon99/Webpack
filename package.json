@@ -1,0 +1,25 @@
+{
+  "name": "webpack",
+  "version": "1.0.0",
+  "description": "babel과 webpack를 이용한 ES6+/ES.NEXT 개발 환경 구축 실습 - https://webpack.kr/",
+  "main": "index.js",
+  "scripts": {
+    "dev":"webpack-dev-server --mode development",
+    "bulid": "webpack --mode production"  
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boyon99/Webpack.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/boyon99/Webpack/issues"
+  },
+  "homepage": "https://github.com/boyon99/Webpack#readme",
+  "devDependencies": {
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.0.0-rc.1"
+  }
+}
