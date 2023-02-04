@@ -1,0 +1,9 @@
+$color--black : #fff;
+
+body{
+  background: orange;
+  h1{
+    color: $color--black;
+    font-style: 40px;
+  }
+}

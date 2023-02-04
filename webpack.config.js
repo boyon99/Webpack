@@ -27,10 +27,11 @@ module.exports = {
   module: {
     rules:[
       {
-        test: /\.css$/, // css로 끝나는 확장자를 가진 파일
+        test: /\.s?css$/, // css로 끝나는 확장자를 가진 파일
         use: [
           'style-loader',
-          'css-loader'
+          'css-loader',
+          'sass-loader'
         ]
       }
     ]
