@@ -34,6 +34,12 @@ module.exports = {
           'postcss-loader', // 순서가 중요하다.
           'sass-loader'
         ]
+      },
+      {
+        test: /\.js$/,
+        use: [
+          'babel-loader'
+        ]
       }
     ]
   },
