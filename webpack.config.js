@@ -31,6 +31,7 @@ module.exports = {
         use: [
           'style-loader',
           'css-loader',
+          'postcss-loader', // 순서가 중요하다.
           'sass-loader'
         ]
       }
