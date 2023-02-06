@@ -31,12 +31,9 @@ IE의 ES6 지원율은 약 11%이다. 이에 따라 구형 브라우저에서 �
 <br/>
 
 
-### 2. entry, output
+### entry, output
 
-- webpack.config.js 파일을 생성하기
-
-// entry : 진입점 파일을 설정한다. js파일을 진입점으로 사용한다. 
-// output : 번들을 반환하는 설정이다.
+#### 2-1. webpack.config.js 파일을 생성 후 다음 입력하기
 
 ```js
 // webpack.config.js 
@@ -54,19 +51,18 @@ module.exports = {
   }
 }
 ```
-// webpack.config.js에 내용 작성
 
-`npm run build`
-> commit : 여기까지 하면 main.js파일의 내용이 'dist'폴더에 번들러되어 추가됨.
+> `npm run build`시 main.js파일의 내용이 'dist'폴더에 번들러되어 추가된다.
 
+<br/>
 
-
-### 3. plugins
-// 번들링 후 결과물의 처리 방식 등 다양한 플러그인들을 설정한다.
+### plugins
+#### 3-1. 번들링 후 결과물의 처리 방식 등 다양한 플러그인들을 설치한다.
 `npm i -D html-webpack-plugin`
 
-- index.html 파일 생성하기
+#### 3-2. index.html 파일 생성하기
 
+#### 3-3. webpack.config.js 생성 후 다음 내용 작성하기
 ```js
 // webpack.config.js
 const HtmlPlugin = require('html-webpack-plugin')
@@ -77,33 +73,32 @@ const HtmlPlugin = require('html-webpack-plugin')
     })
   ]
 ```
-// webpack.config.js에 html plugin 작성하기
 
+#### 3-4. webpack.config.js에 devServer 추가하기
 ```js
   devServer:{
     host: 'localhost'
   }
 ```
-// webpack.config.js에 devServer 추가하기
 
-`npm run dev`
 
-> commit : 여기까지 하면 index.html파일을 dev 경로로 해서 오픈할 수 있음
+> `npm run dev`시 index.html파일을 dev 경로로 해서 오픈할 수 있다.
 
 
 
-### 4. 정적 파일 연결
+### 정적 파일 연결
 
-- static 파일 생성 후 정적 파일(이미지 등) 넣기 (images/logo.png와 favicon.ico추가함)
+#### 4-1. static 파일 생성 후 정적 파일(이미지 등) 넣고 html에 연결하기
 
 ```html
+<!--index.html 폴더에 연결한다. 이때 html파일과 static 폴더안에 파일 역시 dist 폴더에 추가되므로 static 경로를 생략하여 작성할 수가 있다.-->
  <img src="./logo.png">
 ```
-// index.html 폴더에 연결한다. 이때 html파일과 static 폴더안에 파일 역시 dist 폴더에 추가되므로 static 경로를 생략하여 작성할 수가 있다.
 
+#### 4-2. static 파일을 dist 폴더에 자동으로 추가되도록 세팅하는 플러그인 설치하기
 `npm i -D copy-webpack-plugin`
-// static 파일을 dist 폴더에 자동으로 추가되도록 세팅하기
 
+#### 4-3. webpack.config.js에 copyplugin 추가하기
 ```js
 const CopyPlugin = require('copy-webpack-plugin')
 
@@ -115,16 +110,12 @@ const CopyPlugin = require('copy-webpack-plugin')
     })
   ]
 ```
-// webpack.config.js에 copyplugin 추가하기
 
-`npm run dev`
-> commit : 여기까지 하면 static 폴더 안에 요소들이 run dev시 자동으로 dist 폴더로 연결됨.
+> `npm run dev`시 static 폴더 안에 요소들이 run dev시 자동으로 dist 폴더로 연결된다.
 
 
-### 5. module
-<!-- #### 1번방법
-- static 폴더 안에 css/main.css 추가
-- index.html에 연결 (./css/main.css로) 잘 적용됨 -->
+### module
+
 
 - css/main.css 생성
 
