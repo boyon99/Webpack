@@ -10,6 +10,8 @@ IE의 ES6 지원율은 약 11%이다. 이에 따라 구형 브라우저에서 �
 
 - 매우 꼼꼼한 구성으로 중/대형 프로젝트에 적합하다.
 
+<br/>
+
 ### 설치 및 실행방법
 
 #### 1-1. 설치하기
@@ -84,6 +86,7 @@ const HtmlPlugin = require('html-webpack-plugin')
 
 > `npm run dev`시 index.html파일을 dev 경로로 해서 오픈할 수 있다.
 
+<br/>
 
 
 ### 정적 파일 연결
@@ -96,9 +99,11 @@ const HtmlPlugin = require('html-webpack-plugin')
 ```
 
 #### 4-2. static 파일을 dist 폴더에 자동으로 추가되도록 세팅하는 플러그인 설치하기
+
 `npm i -D copy-webpack-plugin`
 
 #### 4-3. webpack.config.js에 copyplugin 추가하기
+
 ```js
 const CopyPlugin = require('copy-webpack-plugin')
 
@@ -114,19 +119,16 @@ const CopyPlugin = require('copy-webpack-plugin')
 > `npm run dev`시 static 폴더 안에 요소들이 run dev시 자동으로 dist 폴더로 연결된다.
 
 
+<br/>
+
 ### module
 
-
-- css/main.css 생성
-
-```js
-// js/main.js 
-import '../css/main.css'
-```
-
-// webpack은 css 파일을 읽을 수가 없음. 그저 dist 폴더로 내어주는 역할만 함. 따라서 css를 읽을 수 있는 외부의 패키지를 설치해야 함.
+#### 5-1. webpack은 css 파일을 읽을 수가 없다. 그저 dist 폴더로 내어주는 역할만 한다. 따라서 css를 읽을 수 있는 외부의 패키지를 설치한다.
 
 `npm i -D css-loader style-loader`
+
+
+#### 5-2. webpack.config.js에서 module 추가하기
 
 ```js
   module: {
@@ -141,22 +143,32 @@ import '../css/main.css'
     ]
   }
 ```
-// webpack.config.js에서 module 추가하기
 
-`npm run dev`
-> commit : 여기까지 하면 css 파일을 연결할 수 있음.
+#### 5-3. css/main.css 생성한 후 js폴더에 추가한다.
 
+```js
+// js/main.js 
+import '../css/main.css'
+```
 
-### 6. scss
-- css폴더와 파일을 scss로 이름변경하기
+> `npm run dev` 시 css 파일을 연결할 수 있음.
+
+<br/>
+
+### scss
+#### 6-1. css폴더와 파일을 scss로 이름변경하기
 
 ```js
 // js/main.js
 import '../scss/main.scss';
 ```
 
+#### 6-2. scss 파일을 읽을 수 있도록 해주는 패키지를 설치한다.
+
 `npm i -D sass-loader sass`
-// scss 파일을 읽을 수 있도록 해주는 패키지
+
+#### 6-3. webpack.config.js에서 module 추가하기
+
 
 ```js
   module: {
@@ -172,17 +184,18 @@ import '../scss/main.scss';
     ]
   }
 ```
-// webpack.config.js에서 module 추가하기
 
+> `npm run dev` 시 scss 파일을 실시간으로 적용할 수 있다.
 
-`npm run dev`
-> 여기까지 하면 scss 파일을 실시간으로 적용할 수 있음
+<br/>
 
-### 7. autoprefixer
+### autoprefixer
+
+#### 7-1. 공급업체 접두사를 자동으로 붙여주는 패키지와 후처리를 도와주는 패키지인 postcss를 설치한다.
 
 `npm i -D postcss autoprefixer postcss-loader`
-// 공급업체 접두사를 자동으로 붙여주는 패키지
-// postcss는 후처리를 도와주는 패키지이다.
+
+#### 7-2. webpack.config.js에서 module 추가한다.
 
 ```js
   module: {
@@ -199,7 +212,8 @@ import '../scss/main.scss';
     ]
   }
 ```
-// webpack.config.js에서 module 추가하기
+
+#### 7-3. package.json에 browserslist을 작성한다.
 
 ```json
 "browserslist": [
@@ -208,7 +222,7 @@ import '../scss/main.scss';
 ]
 ```
 
-- .postcssrc.js 파일 생성
+#### 7-4. .postcssrc.js 파일 생성한 후 모듈을 작성한다.
 
 ```js
 // .postcssrc.js
@@ -219,18 +233,17 @@ module.exports = {
 }
 ```
 
-`npm run dev`
-> 여기까지 하면 자동으로 브라우저 접두사가 붙는다.
+> `npm run dev`시 자동으로 브라우저 접두사가 붙는다.
 
+<br/>
 
+### babel
 
-### 8. babel
+#### 8-1. 최신 사양의 소스코드를 구형 브라우저에서도 동작하는 ES5 사양의 소스코드로 변환(트랜스파일링)을 해주는 패키지를 설치한다.
 
 `npm i @babel/core @babel/preset-env @babel/plugin-transform-runtime`
 
-// 최신 사양의 소스코드를 구형 브라우저에서도 동작하는 ES5 사양의 소스코드로 변환(트랜스파일링)을 할 수 있다.
-
-- .babelrc.js 파일 생성
+#### 8-2. .babelrc.js 파일 생성후 모듈로 내보낸다.
 
 ```js
 // .babelrc.js
@@ -242,7 +255,11 @@ module.exports = {
 }
 ```
 
+#### 8-3. 바벨로더를 설치한다.
+
 `npm i -D babel-loader`
+
+#### 8-4. webpack.config.js에서 module 추가한다.
 
 ```js
   module: {
@@ -257,8 +274,6 @@ module.exports = {
   }
 ```
 
-// webpack.config.js에서 module 추가하기
-
-> babel 설치완료
+> babel 설치가 완료되었다.
 
 
